@@ -10,6 +10,13 @@ if(APPLE AND NOT IOS)
     set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "Build architectures for macOS")
 endif()
 
+# Emscripten/WASM settings
+if(EMSCRIPTEN)
+    set(CMAKE_EXECUTABLE_SUFFIX ".wasm")
+    add_compile_options(-pthread)
+    add_link_options(-pthread -sSIDE_MODULE=1 -sWASM_BIGINT)
+endif()
+
 # godot-cpp
 add_subdirectory(extern/godot-cpp)
 

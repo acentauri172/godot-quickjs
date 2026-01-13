@@ -94,6 +94,17 @@ cmake -B build-windows \
 cmake --build build-windows
 ```
 
+### Web (Emscripten/WASM)
+
+```bash
+# Install Emscripten first: brew install emscripten (macOS)
+emcmake cmake -B build-web -DCMAKE_BUILD_TYPE=Release
+cmake --build build-web
+# Output: build-web/kbounce_quickjs.wasm
+```
+
+This ensures identical floating point behavior across all browsers (Chrome/V8, Firefox/SpiderMonkey, Safari/JSC).
+
 ## Installation
 
 1. Copy the built library to your Godot project:
